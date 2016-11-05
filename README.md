@@ -18,10 +18,46 @@ $ composer require hixman/psr-container
 
 ## Usage
 
+**Basic Usage**
+
 ``` php
-$skeleton = new Hixman\PsrContainer();
-echo $skeleton->echoPhrase('Hello, League!');
+$container =  new Container();
+$container->set(UserRepository::class, function(){
+    return new UserRepository();
+});
+$userRepositoryExits = $container->has(UserRepository::class;
+$userRepository = $container->get(UserRepository::class);
 ```
+
+
+**Delegated Repository**
+
+Only delegated container lookup.
+
+``` php
+$container =  new Container();
+$delegatedContainer = new Container();
+$container->setDelegatedContainer($delegatedContainer);
+$container->set(UserRepository::class, function(){
+    return new UserRepository();
+});
+$userRepositoryExits = $container->has(UserRepository::class; // False
+$userRepository = $container->get(UserRepository::class); // Throws NotFoundException
+```
+
+Delegated container and itself lookup
+
+``` php
+$container =  new Container();
+$delegatedContainer = new Container();
+$container->setDelegatedContainer($delegatedContainer, DelegableInterface::NOT_ONLY_DELEGATED);
+$container->set(UserRepository::class, function(){
+    return new UserRepository();
+});
+$userRepositoryExits = $container->has(UserRepository::class; // True
+$userRepository = $container->get(UserRepository::class); // A new instance of UserRepository
+```
+
 
 ## Change log
 
@@ -56,7 +92,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-downloads]: https://img.shields.io/packagist/dt/hixman/psr-container.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/hixman/psr-container
-[link-travis]: https://travis-ci.org/hixman/psr-container
+[link-travis]: https://travis-ci.org/HIXMAN/psr-container
 [link-downloads]: https://packagist.org/packages/hixman/psr-container
 [link-author]: https://github.com/Hixman
 [link-contributors]: ../../contributors
