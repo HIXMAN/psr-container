@@ -2,6 +2,7 @@
 
 namespace Hixman\PsrContainer;
 
+use Closure;
 use Hixman\PsrContainer\Exceptions\ContainerException;
 use Hixman\PsrContainer\Exceptions\NotFoundException;
 use Hixman\PsrContainer\Interfaces\ContainerInterface;
@@ -79,7 +80,7 @@ class Container implements
      *
      * @return mixed Entry.
      */
-    public function set($id, callable $callable)
+    public function set($id, Closure $callable)
     {
         $this->container[$id] = $callable;
     }

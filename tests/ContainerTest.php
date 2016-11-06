@@ -177,34 +177,28 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $this->assertAttributeEquals(DelegableInterface::NOT_ONLY_DELEGATED, 'onlyDelegated', $container);
     }
 
-    /**
-     * @expectedException ContainerException
-     */
     public function testContainerExceptionThrownWhenCreatingInstance()
     {
-//        //
-//        $items = [
-//            stdClass::class => function () {
-//                throw new \Exception('Exception thrown when creating instance');
-//            },
-//        ];
-//        $container = new Container($items);
-//        //
-//        $this->expectException(ContainerException::class);
-//        $container->get(stdClass::class);
-//        //
+        //
+        $items = [
+            stdClass::class => function () {
+                throw new \Exception('Exception thrown when creating instance');
+            },
+        ];
+        $container = new Container($items);
+        //
+        $this->expectException(ContainerException::class);
+        $container->get(stdClass::class);
+        //
     }
 
-    /**
-     * @expectedException NotFoundException
-     */
     public function testNotFoundExceptionThrownWhenNoIdFound()
     {
-//        //
-//        $container = new Container();
-//        //
-//        $this->expectException(NotFoundException::class);
-//        $container->get(stdClass::class);
-//        //
+        //
+        $container = new Container();
+        //
+        $this->expectException(NotFoundException::class);
+        $container->get(stdClass::class);
+        //
     }
 }

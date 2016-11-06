@@ -2,6 +2,7 @@
 
 namespace Hixman\PsrContainer\Interfaces;
 
+use Closure;
 use Hixman\PsrContainer\Exceptions\ContainerException;
 use Hixman\PsrContainer\Exceptions\NotFoundException;
 
@@ -24,5 +25,5 @@ interface SettableInterface
      *
      * @return mixed Entry.
      */
-    public function set($id, callable $object);
+    public function set($id, Closure $object);
 }
