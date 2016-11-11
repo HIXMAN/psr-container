@@ -92,7 +92,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-downloads]: https://img.shields.io/packagist/dt/hixman/psr-container.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/hixman/psr-container
-[link-travis]: https://travis-ci.org/HIXMAN/psr-container
+[link-travis]: https://travis-ci.org/hixman/psr-container
 [link-downloads]: https://packagist.org/packages/hixman/psr-container
 [link-author]: https://github.com/Hixman
 [link-contributors]: ../../contributors
