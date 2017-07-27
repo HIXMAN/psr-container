@@ -105,9 +105,10 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     public function testContainerGetMethodWhenNotOnlyDelegatedContainer()
     {
         //
+        $expectedDateTime = new DateTime();
         $itemsContainer = [
-            DateTime::class => function () {
-                return new DateTime();
+            DateTime::class => function () use ($expectedDateTime){
+                return $expectedDateTime;
             }
         ];
         $itemsDelegatedContainer = [
@@ -116,7 +117,6 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
             }
         ];
         $expectedStdClass = new stdClass();
-        $expectedDateTime = new DateTime();
         $container = new Container($itemsContainer);
         $delegatedContainer = new Container($itemsDelegatedContainer);
         $container->setDelegatedContainer($delegatedContainer, DelegableInterface::NOT_ONLY_DELEGATED);
